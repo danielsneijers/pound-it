@@ -1,3 +1,5 @@
+import { FLAT_SUBSET } from './constants/colours';
+
 (function () {
     // globals
     var canvas;
@@ -17,7 +19,7 @@
     // objects
 
     const particleColors = {
-      colorOptions: ["DodgerBlue", "OliveDrab", "Gold", "pink", "SlateBlue", "lightblue", "Violet", "PaleGreen", "SteelBlue", "SandyBrown", "Chocolate", "Crimson"],
+      colorOptions: FLAT_SUBSET,
       colorIndex: 0,
       colorIncrementer: 0,
       colorThreshold: 10,
