@@ -1,2 +1,12 @@
 # TODO
 - [ ] polyfill window.requestAnimationFrame
+- [ ] remove weird IIFE
+- [x] handle window resize
+- [ ] Make max particles dependant on screen size
+- [ ] add modules folder to webpack
+- [x] rename app.js to index.js
+- [ ] add style loader
+- [ ] optimize webpack production build
+- [ ] move weird random math from particle util to math util
+- [ ] rename math util to random util?
+- [ ] refactor confetti module to confetti factory

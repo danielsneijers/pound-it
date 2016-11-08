@@ -5,6 +5,11 @@ import Store from '../store'
 
 export const canvas = document.getElementById('canvas')
 
+export function fitCanvasToScreen () {
+  canvas.width = Frame.width
+  canvas.height = Frame.height
+}
+
 export function initialDraw () {
   const ctx = canvas.getContext('2d')
   const { width, height } = Frame
