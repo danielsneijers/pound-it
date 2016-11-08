@@ -1,4 +1,5 @@
 const Store = {
+  lockScale: false,
   confettiActive: false,
   particles: [],
   angle: 0,

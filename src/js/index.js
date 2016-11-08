@@ -21,16 +21,26 @@ window.conf = Confetti
 Confetti.init()
 
 Pressure.set('#fist', {
-  change: (force, event) => zoomIn(force)
+  change: (force, event) => zoomIn(force),
+  end: () => {
+    fist.setAttribute('class', 'animationEnded')
+    fist.style.transform = 'scale(0.8)'
+  }
 })
 
 function zoomIn (force) {
-  console.log(force)
-  // force limit 45
+  if (Store.lockScale) {
+    return
+  }
+
+  console.log('ha')
+
   const scale = force * 10 < 1 ? 1 : force * 10
-  fist.style.transform = `scale(${scale})`
+  fist.style.transform = `scale(${scale / 5})`
 
   if (scale >= 5 && !Store.confettiActive) {
     Confetti.start()
+    fist.classList.add('bounceIn')
+    Store.lockScale = true
   }
 }
