@@ -1,13 +1,12 @@
 import Store from '../store'
 import { MAX_PARTICLES, CONFETTI_COLOURS } from '../constants/constants'
 import Frame from '../utils/frame'
-import { canvas, initialDraw } from '../utils/canvas'
-import { stepParticle, repositionParticle } from '../utils/particle'
+import { canvas, fitCanvasToScreen, initialDraw } from '../utils/canvas'
+import { stepParticle, checkForReposition } from '../utils/particle'
 import { createParticle } from '../factories/confettiParticle'
 
 class ConfettiManager {
   constructor () {
-    this.canvas = canvas
     this.ctx = canvas.getContext('2d')
   }
 
@@ -26,8 +25,7 @@ class ConfettiManager {
   }
 
   start () {
-    this.canvas.width = Frame.width
-    this.canvas.height = Frame.height;
+    fitCanvasToScreen();
 
     (function animloop ({ animationComplete, animationHandler }) {
       if (animationComplete) return null
@@ -51,35 +49,16 @@ class ConfettiManager {
 
     Store.particles.forEach((particle, i) => {
       if (Store.animationComplete) return
-
-      if (!Store.confettiActive && particle.y < -15) {
-        particle.y = Frame.height + 100
-      }
+      if (!Store.confettiActive && particle.y < -15) particle.y = Frame.height + 100
 
       stepParticle(particle, i, Store.angle)
 
       if (particle.y <= Frame.height) remainingFlakes++
 
-      this._checkForReposition(particle, i)
+      checkForReposition(particle, i)
     })
 
     if (remainingFlakes === 0) this.stop()
-  }
-
-  _checkForReposition (particle, index) {
-    if ((
-      particle.x > Frame.width + 20 ||
-      particle.x < -20 ||
-      particle.y > Frame.height
-    ) && Store.confettiActive) {
-      if (index % 5 > 0 || index % 2 === 0) { // 66.67% of the flakes
-        repositionParticle(particle, Math.random() * Frame.width, -10, Math.floor(Math.random() * 10) - 10)
-      } else {
-        Math.sin(Store.angle) > 0
-          ? repositionParticle(particle, -5, Math.random() * Frame.height, Math.floor(Math.random() * 10) - 10) // Enter from the left
-          : repositionParticle(particle, Frame.width + 5, Math.random() * Frame.height, Math.floor(Math.random() * 10) - 10) // Enter from the right
-      }
-    }
   }
 }
 
