@@ -1,7 +1,13 @@
+import Pressure from 'pressure'
+import Store from 'store'
 import debounce from 'lodash/debounce'
 import ConfettiManager from 'modules/confetti'
 import { fitCanvasToScreen } from 'utils/canvas'
 import Frame from 'utils/frame'
+
+require('styles.css')
+
+const fist = document.getElementById('fist')
 
 window.onresize = debounce(() => {
   Frame.updateDimensions()
@@ -10,25 +16,21 @@ window.onresize = debounce(() => {
 
 const Confetti = new ConfettiManager()
 
+window.conf = Confetti
+
 Confetti.init()
 
-  // function ClearTimers () {
-  //   clearTimeout(Store.reactivationTimerHandler)
-  //   clearTimeout(Store.animationHandler)
-  // }
+Pressure.set('#fist', {
+  change: (force, event) => zoomIn(force)
+})
 
-  // function DeactivateConfetti () {
-  //   Store.confettiActive = false
-  //   ClearTimers()
-  // }
+function zoomIn (force) {
+  console.log(force)
+  // force limit 45
+  const scale = force * 10 < 1 ? 1 : force * 10
+  fist.style.transform = `scale(${scale})`
 
-  // function RestartConfetti () {
-  //   ClearTimers()
-  //   StopConfetti()
-  //
-  //   Store.reactivationTimerHandler = setTimeout(function () {
-  //     Store.confettiActive = true
-  //     Store.animationComplete = false
-  //     initializeConfetti()
-  //   }, 100)
-  // }
+  if (scale >= 5 && !Store.confettiActive) {
+    Confetti.start()
+  }
+}

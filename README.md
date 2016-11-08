@@ -1,12 +1,15 @@
 # TODO
-- [ ] polyfill window.requestAnimationFrame
-- [ ] remove weird IIFE
-- [x] handle window resize
-- [ ] Make max particles dependent on screen size
-- [x] add modules folder to webpack
-- [x] rename app.js to index.js
-- [ ] add style loader
-- [ ] optimize webpack production build
 - [ ] move weird random math from particle util to math util
 - [ ] rename math util to random util?
 - [ ] refactor confetti module to confetti factory
+- [ ] remove weird IIFE
+- [ ] Make max particles dependent on screen size
+- [ ] polyfill window.requestAnimationFrame
+- [ ] add style loader
+- [ ] add fist with pressure.js
+- [ ] add node server for requests with name in it
+- [ ] fix bug where restart speeds up animation. wut?
+- [x] handle window resize
+- [x] add modules folder to webpack
+- [x] rename app.js to index.js
+- [x] optimize webpack production build

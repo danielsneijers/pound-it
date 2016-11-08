@@ -25,6 +25,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css-loader!postcss-loader'
       }
     ]
   },
@@ -33,7 +37,8 @@ module.exports = {
     extensions: ['', '.js'],
     modulesDirectories: [
       'node_modules',
-      'src/js'
+      'src/js',
+      'src/css'
     ]
   },
   plugins: [
@@ -42,5 +47,11 @@ module.exports = {
       template: path.resolve(__dirname, 'src/index.html'),
       inject: true
     })
-  ]
+  ],
+  postcss: () => {
+    return [
+      require('postcss-import'),
+      require('postcss-cssnext')({ browsers: 'last 3 Chrome versions' })
+    ]
+  }
 }

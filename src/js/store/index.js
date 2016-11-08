@@ -1,5 +1,5 @@
 const Store = {
-  confettiActive: true,
+  confettiActive: false,
   particles: [],
   angle: 0,
   tiltAngle: 0,
@@ -16,6 +16,11 @@ const Store = {
   updateAngle (angle = 0, tiltAngle = 0) {
     this.angle += angle
     this.tiltAngle += tiltAngle
+  },
+
+  clearTimers () {
+    clearTimeout(this.reactivationTimerHandler)
+    clearTimeout(this.animationHandler)
   }
 }
 

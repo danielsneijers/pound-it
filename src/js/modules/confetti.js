@@ -21,11 +21,11 @@ class ConfettiManager {
       Store.particles.push(createParticle(particleColor))
     }
 
-    this.start()
+    fitCanvasToScreen()
   }
 
   start () {
-    fitCanvasToScreen();
+    Store.confettiActive = true;
 
     (function animloop ({ animationComplete, animationHandler }) {
       if (animationComplete) return null
@@ -59,6 +59,24 @@ class ConfettiManager {
     })
 
     if (remainingFlakes === 0) this.stop()
+  }
+
+  deactivate () {
+    Store.confettiActive = false
+    Store.clearTimers()
+  }
+
+  restart () {
+    Store.clearTimers()
+    this.stop()
+
+    Store.reactivationTimerHandler = setTimeout(() => {
+      Store.confettiActive = true
+      Store.animationComplete = false
+
+      this.init()
+      this.start()
+    }, 100)
   }
 }
 
