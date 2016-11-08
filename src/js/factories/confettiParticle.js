@@ -1,6 +1,6 @@
-import { MAX_PARTICLES } from '../constants/constants'
-import { RandomFromTo } from '../utils/math'
-import Frame from '../utils/frame'
+import { MAX_PARTICLES } from 'constants/constants'
+import { RandomFromTo } from 'utils/math'
+import Frame from 'utils/frame'
 
 function ConfettiParticle (color) {
   const { width, height } = Frame

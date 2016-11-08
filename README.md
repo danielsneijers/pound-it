@@ -2,8 +2,8 @@
 - [ ] polyfill window.requestAnimationFrame
 - [ ] remove weird IIFE
 - [x] handle window resize
-- [ ] Make max particles dependant on screen size
-- [ ] add modules folder to webpack
+- [ ] Make max particles dependent on screen size
+- [x] add modules folder to webpack
 - [x] rename app.js to index.js
 - [ ] add style loader
 - [ ] optimize webpack production build

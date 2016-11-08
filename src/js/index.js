@@ -1,7 +1,7 @@
-import ConfettiManager from './modules/confetti'
 import debounce from 'lodash/debounce'
-import { fitCanvasToScreen } from './utils/canvas'
-import Frame from './utils/frame'
+import ConfettiManager from 'modules/confetti'
+import { fitCanvasToScreen } from 'utils/canvas'
+import Frame from 'utils/frame'
 
 window.onresize = debounce(() => {
   Frame.updateDimensions()

@@ -4,9 +4,10 @@
   "main": "index.js",
   "author": "Daniel Sneijers <daniel.sneijers@gmail.com>",
   "scripts": {
-    "start": "cp src/index.html build/index.html && webpack-dev-server --content-base build/ --hot --inline",
+    "start": "npm run cleanup && webpack-dev-server --config webpack.config.development.js --content-base public/ --hot --inline",
     "lint:js": "eslint ./",
-    "build": "cp src/index.html build/index.html && webpack -p"
+    "build": " npm run cleanup && NODE_ENV=production webpack -p --config webpack.config.production.js",
+    "cleanup": "rm -rf ./public && mkdir public"
   },
   "license": "MIT",
   "devDependencies": {
@@ -20,6 +21,7 @@
     "eslint-loader": "^1.6.1",
     "eslint-plugin-promise": "^3.3.1",
     "eslint-plugin-standard": "^2.0.1",
+    "html-webpack-plugin": "^2.24.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },

@@ -1,7 +1,7 @@
-import { MAX_PARTICLES } from '../constants/constants'
-import ConfettiManager from '../modules/confetti'
-import Frame from '../utils/frame'
-import Store from '../store'
+import { MAX_PARTICLES } from 'constants/constants'
+import ConfettiManager from 'modules/confetti'
+import Frame from 'utils/frame'
+import Store from 'store'
 
 export const canvas = document.getElementById('canvas')
 

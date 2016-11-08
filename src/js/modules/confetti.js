@@ -1,9 +1,9 @@
-import Store from '../store'
-import { MAX_PARTICLES, CONFETTI_COLOURS } from '../constants/constants'
-import Frame from '../utils/frame'
-import { canvas, fitCanvasToScreen, initialDraw } from '../utils/canvas'
-import { stepParticle, checkForReposition } from '../utils/particle'
-import { createParticle } from '../factories/confettiParticle'
+import Store from 'store'
+import { MAX_PARTICLES, CONFETTI_COLOURS } from 'constants/constants'
+import Frame from 'utils/frame'
+import { canvas, fitCanvasToScreen, initialDraw } from 'utils/canvas'
+import { stepParticle, checkForReposition } from 'utils/particle'
+import { createParticle } from 'factories/confettiParticle'
 
 class ConfettiManager {
   constructor () {
