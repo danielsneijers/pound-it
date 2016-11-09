@@ -1,9 +1,9 @@
-import Store from '../store'
-import { MAX_PARTICLES, CONFETTI_COLOURS } from '../constants/constants'
-import Frame from '../utils/frame'
-import { canvas, fitCanvasToScreen, initialDraw } from '../utils/canvas'
-import { stepParticle, checkForReposition } from '../utils/particle'
-import { createParticle } from '../factories/confettiParticle'
+import Store from 'store'
+import { MAX_PARTICLES, CONFETTI_COLOURS } from 'constants/constants'
+import Frame from 'utils/frame'
+import { canvas, fitCanvasToScreen, initialDraw } from 'utils/canvas'
+import { stepParticle, checkForReposition } from 'utils/particle'
+import { createParticle } from 'factories/confettiParticle'
 
 class ConfettiManager {
   constructor () {
@@ -21,11 +21,11 @@ class ConfettiManager {
       Store.particles.push(createParticle(particleColor))
     }
 
-    this.start()
+    fitCanvasToScreen()
   }
 
   start () {
-    fitCanvasToScreen();
+    Store.confettiActive = true;
 
     (function animloop ({ animationComplete, animationHandler }) {
       if (animationComplete) return null
@@ -59,6 +59,24 @@ class ConfettiManager {
     })
 
     if (remainingFlakes === 0) this.stop()
+  }
+
+  deactivate () {
+    Store.confettiActive = false
+    Store.clearTimers()
+  }
+
+  restart () {
+    Store.clearTimers()
+    this.stop()
+
+    Store.reactivationTimerHandler = setTimeout(() => {
+      Store.confettiActive = true
+      Store.animationComplete = false
+
+      this.init()
+      this.start()
+    }, 100)
   }
 }
 

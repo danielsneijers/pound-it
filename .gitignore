@@ -1,4 +1,5 @@
-build
+public
 node_modules
 npm-debug.log
 .DS_Store
+/src/js/config/firebase.js

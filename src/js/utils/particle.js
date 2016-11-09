@@ -1,5 +1,5 @@
-import Frame from './frame'
-import Store from '../store'
+import Frame from 'utils/frame'
+import Store from 'store'
 
 export function stepParticle (particle, particleIndex, angle) {
   particle.y += (Math.cos(angle + particle.density) + 3 + particle.radius / 2) / 2
