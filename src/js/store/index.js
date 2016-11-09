@@ -9,6 +9,9 @@ const Store = {
   deactivationTimerHandler: null,
   reactivationTimerHandler: null,
 
+  hitCounters: {},
+  domElements: {},
+
   resetParticleAnimationState () {
     this.particles = []
     this.animationComplete = false

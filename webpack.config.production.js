@@ -48,6 +48,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/index.html'),
+      googleAnalytics: {
+        trackingId: 'UA-15406251-3',
+        pageViewOnLoad: true
+      },
       inject: true,
       hash: true
     })

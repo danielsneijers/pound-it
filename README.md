@@ -1,14 +1,14 @@
 # TODO
-- [ ] move weird random math from particle util to math util
+- [ ] put canvas in store
+- [ ] move random math from particle util to math util
 - [ ] rename math util to random util?
+- [ ] remove IIFE from confetti module
 - [ ] refactor confetti module to confetti factory
-- [ ] remove weird IIFE
 - [ ] Make max particles dependent on screen size
-- [ ] polyfill window.requestAnimationFrame
-- [ ] add style loader
-- [ ] add fist with pressure.js
-- [ ] add node server for requests with name in it
+- [ ] polyfill window.requestAnimationFrame?
 - [ ] fix bug where restart speeds up animation. wut?
+- [x] add style loader
+- [x] add fist with pressure.js
 - [x] handle window resize
 - [x] add modules folder to webpack
 - [x] rename app.js to index.js
