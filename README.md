@@ -7,9 +7,3 @@
 - [ ] Make max particles dependent on screen size
 - [ ] polyfill window.requestAnimationFrame?
 - [ ] fix bug where restart speeds up animation. wut?
-- [x] add style loader
-- [x] add fist with pressure.js
-- [x] handle window resize
-- [x] add modules folder to webpack
-- [x] rename app.js to index.js
-- [x] optimize webpack production build
